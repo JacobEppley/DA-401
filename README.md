@@ -1,7 +1,23 @@
 # DA-401
 
-In this project, I am investigating our ability to predict the number of overdoses in Allegheny County, Pennsylvania through a time series analysis of overdose EMS data. Currently, we have a KNN model working (to some degree) and this repository is used to hold the code, date, and preliminary results as we progress through the project.
+In this project, I am investigating our ability to predict the number of overdoses in census block groups across Allegheny County, Pennsylvania through a time series analysis of overdose EMS data. In this dataset, overdoses are reported by yearly quarters, and we are working to predict the values for Quarter 4 2024. We are doing this analysis using a K Nearest Neighbors (KNN) approach where we use the average of the k past quarters' number of overdose calls to predict the next value in each census block group. To test our model, we split the data into training data (all data from Quarter 1 2015 to Quarter 2 2024) and predicted the Quarter 3 2024 values (testing data). This allows us to assess how well our model is doing, and the code to do that is detailed below.
 
-In the code file found in this repo, the commented-out code details the methods used to work with the data and get it into the usable training/testing format we will use for KNN analysis. This code is left in for reference, however due to runtime of the code it was much more effective to save the training/testing data as seperate csv files and just load those in for future analysis. Unfortunately, due to the size of the training data, it is unable to be uploaded onto GitHub. The full dataset can be found here: https://catalog.data.gov/dataset/allegheny-county-911-dispatches-ems-and-fire. I utilized the 911 EMS Dispatches data csv, and all of the code for data manipulation can be found commented out in the Code file. 
+In this repository, there are 4 main code files of importance:
 
-Also, some older methods of analysis/graphing are included as they may be useful to reference again throughout the project. Just because they are not useful now does not mean they cannot be useful in the future.
+##Data Manipulation
+
+This contains all of the data manipulation we conducted to get the data in a usable format for the KNN analysis. This requires having the data downloaded (linked below) and ends with creating two CSV files of training and testing data that will be uploaded to be used in the following code files for the analysis.
+
+##BuildingKModel
+
+This file contains the methods we utlized to build the KNN and comparing the predicted values we created through the training data to the actual values in the testing data. It also contains code used to create the heatmap visuals and explore trends in the past data.
+
+##ApplyingKModel
+
+This file contains the running of our KNN model on the full dataset to predict the Quarter 4 2024 values.
+
+##ANOVA Testing
+
+This file contains the code used to run ANOVA testing on the data in order to check for seasonality between the quarters. We did not find conclusive evidence of seasonality in this project
+
+Unfortunately, due to the size of the data, it is unable to be uploaded onto GitHub. The full dataset can be found here: https://catalog.data.gov/dataset/allegheny-county-911-dispatches-ems-and-fire. We utilized the 911 EMS Dispatches data csv as well as the zip file of census block group geographies.
